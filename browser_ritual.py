@@ -1,5 +1,5 @@
 #selenium webdriver that opens up the browser and goes to email, scrolls, then facebook, scrolls, twitter, scrolls
-
+#thanks, Leon again for the starter code
 
 import time, random, ConfigParser
 from selenium import webdriver
@@ -124,9 +124,11 @@ def Main():
 	for i in range(number_end):
 		browser.get(gmail_url)
 		time.sleep(random.uniform(3,10))
+		print "Just one more thing"
 
 		browser.get(facebook_url)
 		time.sleep(random.uniform(3,10))
+		print "I swear, I'll get off soon"
 
 		
 
