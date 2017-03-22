@@ -27,60 +27,76 @@ def Main():
 		print "[-] couldn't read settings"
 
 	
-
-	#Gmail
-	# configDomain = config.get('google','domain')
-	configEmail = config.get('google','email')
-	configPass = config.get('google','psswrd')
-
-	#Facebook
-	# facebook_configDomain = config.get('facebook')
-
 	## Initiate browser
 	browser = webdriver.Chrome()
-	browser.set_window_size(980,1820)
+	browser.set_window_size(980,2080)
 	browser.set_window_position(200,200)
 
-	## URLs
-	gmail_url = 'http://gmail.com'
-	# facebook_url ='facebook.com'
+	#Gmail
+	# gmail_url = 'http://gmail.com'
+	# gmail_configEmail = config.get('google','email')
+	# gmail_configPass = config.get('google','psswrd')
 
 
-	#gmail
-	browser.get(gmail_url)
-	page = BeautifulSoup(browser.page_source, "lxml")
-	# signinUrl = 
-	time.sleep(random.uniform(0.5,1.4)) #make this longer?
-	# browser.get(signinUrl) #create function
-	emailElement = browser.find_element_by_id("Email")
+	# browser.get(gmail_url)
+	# gmail_page = BeautifulSoup(browser.page_source, "lxml")
+	# time.sleep(random.uniform(0.5,1.4)) 
+	# gmail_emailElement = browser.find_element_by_id("Email")
 
-	configEmail2 = list(configEmail)
-	for i in configEmail2:
-		emailElement.send_keys(i)
-		time.sleep(random.uniform(0,0.1))
+	# gmail_configEmail2 = list(gmail_configEmail)
+	# for i in gmail_configEmail2:
+	# 	gmail_emailElement.send_keys(i)
+	# 	time.sleep(random.uniform(0,0.1))
 
-	time.sleep(random.uniform(0.5,1.4))
-	emailElement.submit()
-	time.sleep(random.uniform(0.5,1.4))
-	passElement = browser.find_element_by_id("Passwd")
+	# time.sleep(random.uniform(0.5,1.4))
+	# gmail_emailElement.submit()
+	# time.sleep(random.uniform(0.5,1.4))
+	# gmail_passElement = browser.find_element_by_id("Passwd")
 
-	configPass2 = list(configPass)
-	for i in configPass2:
-		passElement.send_keys(i)
-		time.sleep(random.uniform(0,0.1))
+	# gmail_configPass2 = list(gmail_configPass)
+	# for i in gmail_configPass2:
+	# 	gmail_passElement.send_keys(i)
+	# 	time.sleep(random.uniform(0,0.1))
 
 
-	time.sleep(random.uniform(0.5,1.4))
-	passElement.submit()
+	# time.sleep(random.uniform(0.5,1.4))
+	# gmail_passElement.submit()
 
-	print "[+] Logged in to Google. Will now browse'"
+	# print "[+] Logged in to Google. Will now browse'"
 	#scroll through page
 
 
-	#facebook
-	# browser.get(facebook_url)
-	# page = BeautifulSoup(browser.page_source, "lxml")
-	# time.sleep(random.uniform(0.5,1.4))
+
+
+	#Facebook
+	facebook_url ='http://www.facebook.com'
+	facebook_configEmail = config.get('facebook','email')
+	facebook_configPass = config.get('facebook','psswrd')
+
+
+	browser.get(facebook_url)
+	facebook_page = BeautifulSoup(browser.page_source, "lxml")
+	time.sleep(random.uniform(0.5,1.4)) 
+	facebook_emailElement = browser.find_element_by_id("email")
+
+	facebook_configEmail2 = list(facebook_configEmail)
+	for i in facebook_configEmail2:
+		facebook_emailElement.send_keys(i)
+		time.sleep(random.uniform(0,0.1))
+
+	time.sleep(random.uniform(0.5,1.4))
+	facebook_passElement = browser.find_element_by_id("pass")
+	facebook_configPass2 = list(facebook_configPass)
+	for i in facebook_configPass2:
+		facebook_passElement.send_keys(i)
+		time.sleep(random.uniform(0,0.1))
+
+
+	time.sleep(random.uniform(0.5,1.4))
+	facebook_passElement.submit()
+
+	print "[+] Logged in to Facebook. Will now browse'"
+	#scroll through page
 
 	browser.close()
 
