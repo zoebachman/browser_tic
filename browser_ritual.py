@@ -22,15 +22,15 @@ def Main():
 	config = ConfigParser.ConfigParser()
 	try:
 		config.read('settings.cfg')
-		print "[+] read your settings"
+		# print "[+] read your settings"
 	except:
 		print "[-] couldn't read settings"
 
 	
 	## Initiate browser
 	browser = webdriver.Chrome()
-	browser.set_window_size(980,2080)
-	browser.set_window_position(200,200)
+	browser.set_window_size(1200,2080)
+	# browser.set_window_position(200,200)
 
 	# Gmail
 	gmail_url = 'http://gmail.com'
@@ -50,7 +50,7 @@ def Main():
 
 	time.sleep(random.uniform(0.5,1.4))
 	gmail_emailElement.submit()
-	time.sleep(random.uniform(0.5,1.4))
+	time.sleep(random.uniform(1,3))
 	gmail_passElement = browser.find_element_by_id("Passwd")
 
 	gmail_configPass2 = list(gmail_configPass)
@@ -62,8 +62,13 @@ def Main():
 	time.sleep(random.uniform(0.5,1.4))
 	gmail_passElement.submit()
 
-	print "[+] Logged in to Google. Will now browse'"
+	print "Ok, I'm going to quickly check my email."
+	time.sleep(random.uniform(3,10))
+
+	
+	# print "S'cool, just some emails from Midori"
 	#scroll through page
+	browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
 
 
@@ -95,16 +100,37 @@ def Main():
 	time.sleep(random.uniform(0.5,1.4))
 	facebook_passElement.submit()
 
-	print "[+] Logged in to Facebook. Will now browse'"
+	print "Just need to see if I missed any crazy articles"
+	time.sleep(random.uniform(3,10))
+
+	
 	#scroll through page
+	# browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+	lenOfPage = browser.execute_script("window.scrollTo(0, document.body.scrollHeight);var lenOfPage=document.body.scrollHeight;return lenOfPage;")
+	match=False
+	while(match==False):
+		lastCount = lenOfPage
+		time.sleep(3)
+		lenOfPage = browser.execute_script("window.scrollTo(0, document.body.scrollHeight);var lenOfPage=document.body.scrollHeight;return lenOfPage;")
+		if lastCount==lenOfPage:
+			match=True
 
-	browser.get(gmail_url)
-	time.sleep(random.uniform(0.5,1.4))
 
-	browser.get(facebook_url)
-	time.sleep(random.uniform(0.5,1.4))
 
-	# browser.close()
+	number_end = random.randint(1,4)
+
+	print "(this will cycle " + str(number_end) + " time(s))"
+
+	for i in range(number_end):
+		browser.get(gmail_url)
+		time.sleep(random.uniform(3,10))
+
+		browser.get(facebook_url)
+		time.sleep(random.uniform(3,10))
+
+		
+
+	browser.close()
 
 if __name__ == '__main__':
 	Main()
