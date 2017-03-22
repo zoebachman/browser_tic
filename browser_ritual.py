@@ -32,37 +32,37 @@ def Main():
 	browser.set_window_size(980,2080)
 	browser.set_window_position(200,200)
 
-	#Gmail
-	# gmail_url = 'http://gmail.com'
-	# gmail_configEmail = config.get('google','email')
-	# gmail_configPass = config.get('google','psswrd')
+	# Gmail
+	gmail_url = 'http://gmail.com'
+	gmail_configEmail = config.get('google','email')
+	gmail_configPass = config.get('google','psswrd')
 
 
-	# browser.get(gmail_url)
-	# gmail_page = BeautifulSoup(browser.page_source, "lxml")
-	# time.sleep(random.uniform(0.5,1.4)) 
-	# gmail_emailElement = browser.find_element_by_id("Email")
+	browser.get(gmail_url)
+	gmail_page = BeautifulSoup(browser.page_source, "lxml")
+	time.sleep(random.uniform(0.5,1.4)) 
+	gmail_emailElement = browser.find_element_by_id("Email")
 
-	# gmail_configEmail2 = list(gmail_configEmail)
-	# for i in gmail_configEmail2:
-	# 	gmail_emailElement.send_keys(i)
-	# 	time.sleep(random.uniform(0,0.1))
+	gmail_configEmail2 = list(gmail_configEmail)
+	for i in gmail_configEmail2:
+		gmail_emailElement.send_keys(i)
+		time.sleep(random.uniform(0,0.1))
 
-	# time.sleep(random.uniform(0.5,1.4))
-	# gmail_emailElement.submit()
-	# time.sleep(random.uniform(0.5,1.4))
-	# gmail_passElement = browser.find_element_by_id("Passwd")
+	time.sleep(random.uniform(0.5,1.4))
+	gmail_emailElement.submit()
+	time.sleep(random.uniform(0.5,1.4))
+	gmail_passElement = browser.find_element_by_id("Passwd")
 
-	# gmail_configPass2 = list(gmail_configPass)
-	# for i in gmail_configPass2:
-	# 	gmail_passElement.send_keys(i)
-	# 	time.sleep(random.uniform(0,0.1))
+	gmail_configPass2 = list(gmail_configPass)
+	for i in gmail_configPass2:
+		gmail_passElement.send_keys(i)
+		time.sleep(random.uniform(0,0.1))
 
 
-	# time.sleep(random.uniform(0.5,1.4))
-	# gmail_passElement.submit()
+	time.sleep(random.uniform(0.5,1.4))
+	gmail_passElement.submit()
 
-	# print "[+] Logged in to Google. Will now browse'"
+	print "[+] Logged in to Google. Will now browse'"
 	#scroll through page
 
 
@@ -98,7 +98,13 @@ def Main():
 	print "[+] Logged in to Facebook. Will now browse'"
 	#scroll through page
 
-	browser.close()
+	browser.get(gmail_url)
+	time.sleep(random.uniform(0.5,1.4))
+
+	browser.get(facebook_url)
+	time.sleep(random.uniform(0.5,1.4))
+
+	# browser.close()
 
 if __name__ == '__main__':
 	Main()
