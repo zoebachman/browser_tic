@@ -3,6 +3,7 @@
 
 import time, random, ConfigParser
 from selenium import webdriver
+from bs4 import BeautifulSoup
 
 
 ## Initiate browser
@@ -15,8 +16,17 @@ browser.set_window_position(200,200)
 gmail_url = 'http://gmail.com'
 facebook_url ='facebook.com'
 
+
+#gmail
 browser.get(gmail_url)
 page = BeautifulSoup(browser.page_source, "lxml")
-
 time.sleep(random.uniform(0.5,1.4)) #make this longer?
-browser.get(signinUrl)
+# browser.get(signinUrl) *need login info*
+
+
+#facebook
+browser.get(facebook_url)
+page = BeautifulSoup(browser.page_source, "lxml")
+time.sleep(random.uniform(0.5,1.4))
+
+browser.close()
